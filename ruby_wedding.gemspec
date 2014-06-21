@@ -7,11 +7,11 @@ require "ruby_wedding/version"
 Gem::Specification.new do |s|
   s.name        = "ruby_wedding"
   s.version     = RubyWedding::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RubyWedding."
-  s.description = "TODO: Description of RubyWedding."
+  s.authors     = ["Chris Stainthorpe"]
+  s.email       = ["chris@randomcat.co.uk"]
+  s.homepage    = "http://www.randomcat.co.uk"
+  s.summary     = "Manage your wedding in a rails app"
+  s.description = "Invitations. Menus. "
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
