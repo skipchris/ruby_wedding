@@ -8,4 +8,8 @@ RubyWedding::Engine.routes.draw do
     get '/', to: 'base#index', as: 'root'
   end
 
+  resources :invitations, only: [:show] do
+    collection { get :find }
+  end
+
 end
