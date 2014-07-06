@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :guest, class: RubyWedding::Guest do
     firstname "Kim"
-    surname "Hop"
+    surname   "Hop"
   end
 end
