@@ -5,7 +5,7 @@ module RubyWedding
   describe Invitation do
     it { should have_and_belong_to_many(:guests) }
 
-    describe 'self#find_by_guest_surname', :focus do
+    describe 'self#find_by_guest_surname' do
       let(:guest1) { create(:guest, firstname: "Barry", surname: "Bobbins") }
       let(:guest2) { create(:guest, firstname: "Doris", surname: "Bobbins") }
       let(:guest3) { create(:guest, firstname: "Tim",   surname: "Krul") }
