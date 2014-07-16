@@ -10,6 +10,7 @@ RubyWedding::Engine.routes.draw do
 
   resources :invitations, only: [:edit, :update] do
     collection { get :find }
+    member { get :thanks }
   end
 
 end
