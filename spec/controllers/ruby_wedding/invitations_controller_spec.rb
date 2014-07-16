@@ -4,6 +4,7 @@ module RubyWedding
   describe InvitationsController do
 
     routes { RubyWedding::Engine.routes }
+    before { controller.stub(:invitation_params).and_return({}) }
 
     describe "find" do
       let(:mock_invitations) { [double("Invitation")] }
@@ -59,7 +60,7 @@ module RubyWedding
 
       context "saves successfully" do
         before do
-          mock_invitation.stub(:update!).and_return(true)
+          mock_invitation.stub(:update).and_return(true)
           put :update, id: 1
         end
         it { should redirect_to(:thanks_invitation) }
@@ -67,7 +68,7 @@ module RubyWedding
 
       context "save fails" do
         before do
-          mock_invitation.stub(:update!).and_raise("pow")
+          mock_invitation.stub(:update).and_return(false)
           Menu.stub(:all).and_return(double('proxy', first: mock_menu))
           put :update, id: 1
         end

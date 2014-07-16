@@ -18,10 +18,10 @@ module RubyWedding
     end
 
     def update
-      begin
-        @invitation.update!(invitation_params)
+      if
+        @invitation.update(invitation_params)
         redirect_to thanks_invitation_path(@invitation)
-      rescue => e
+      else
         @menu = Menu.all.first
         render :edit
       end
