@@ -10,7 +10,7 @@ module RubyWedding
     # Not really sure how this should work more generically...
     # I’m just doing what’s right for *my* wedding
     #
-    def show
+    def edit
       @invitation = Invitation.find(params[:id])
       @menu       = Menu.all.first
     end
