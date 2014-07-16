@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621211710) do
+ActiveRecord::Schema.define(version: 20140706195334) do
+
+  create_table "ruby_wedding_courses", force: true do |t|
+    t.string   "name"
+    t.integer  "menu_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ruby_wedding_courses", ["menu_id"], name: "index_ruby_wedding_courses_on_menu_id"
+
+  create_table "ruby_wedding_dishes", force: true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ruby_wedding_dishes", ["course_id"], name: "index_ruby_wedding_dishes_on_course_id"
 
   create_table "ruby_wedding_guests", force: true do |t|
     t.string   "firstname"
@@ -28,6 +46,12 @@ ActiveRecord::Schema.define(version: 20140621211710) do
   create_table "ruby_wedding_invitations_ruby_wedding_guests", force: true do |t|
     t.integer "invitation_id", null: false
     t.integer "guest_id",      null: false
+  end
+
+  create_table "ruby_wedding_menus", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
