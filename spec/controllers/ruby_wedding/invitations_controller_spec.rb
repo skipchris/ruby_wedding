@@ -20,6 +20,7 @@ module RubyWedding
 
     describe "show" do
       let(:mock_invitation) { double("Invitation") }
+      let(:mock_menu)       { double("Menu") }
 
       before do
         Invitation.stub(:find).and_return(mock_invitation)
@@ -30,7 +31,21 @@ module RubyWedding
       it { should render_template('invitations/show') }
       it { expect(response.status).to eq(200) }
 
-    end
+      context "A menu is present" do
+        before { Menu.stub(:all).and_return(double('proxy', first: mock_menu)) }
+        describe "instance vars" do
+          before { get :show, id: 1 }
+          it { expect(assigns(:menu)).to eq(mock_menu) }
+        end
+      end
 
+      context "No menu is present" do
+        before { Menu.stub(:all).and_return(double('proxy', first: nil)) }
+        describe "instance vars" do
+          before { get :show, id: 1 }
+          it { expect(assigns(:menu)).to be_nil }
+        end
+      end
+    end
   end
 end
