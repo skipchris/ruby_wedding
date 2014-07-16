@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module RubyWedding
-
   describe Invitation do
     it { should have_and_belong_to_many(:guests) }
+    it { should accept_nested_attributes_for(:guests) }
 
     describe 'self#find_by_guest_surname' do
       let(:guest1) { create(:guest, firstname: "Barry", surname: "Bobbins") }
