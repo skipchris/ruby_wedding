@@ -10,5 +10,9 @@ module RubyWedding
     validates :firstname, presence: true
     validates :surname, presence: true
 
+    def fullname
+      "#{firstname} #{surname}"
+    end
+
   end
 end

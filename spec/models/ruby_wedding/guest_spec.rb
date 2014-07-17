@@ -13,5 +13,11 @@ module RubyWedding
       it { should validate_presence_of(:firstname) }
       it { should validate_presence_of(:surname) }
     end
+
+    describe '#fullname' do
+      let(:guest) { build(:guest) }
+      it { expect(guest.fullname).to eq("Kim Hop") }
+    end
+
   end
 end
