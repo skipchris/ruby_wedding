@@ -8,3 +8,4 @@ This project rocks and uses MIT-LICENSE.
   assumes one (becuse that’s what I needed), but data model supports many
   in case people want to extend this.
 - More validations? In particular could validate only one dish per course.
+- I18n
