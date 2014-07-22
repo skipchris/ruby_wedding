@@ -1,1 +1,16 @@
-Hey.
+<%= form_for @invitation do |f| %>
+  <h1><%= @invitation.guests.map { |g| g.fullname }.join(" and ") %></h1>
+
+  <%= f.fields_for :guests do |gff| %>
+    <h2><%= gff.object.fullname %></h2>
+    Coming? <%= gff.check_box :rsvp %>
+
+    <% gff.object.menu_choices.each do |menu_choice| %>
+      <%= gff.fields_for :menu_choices, menu_choice do |mcff| %>
+        <p><%= mcff.collection_radio_buttons :dish_id, RubyWedding::Dish.where(course_id: menu_choice.course_id), :id, :name %></p>
+        <%= mcff.hidden_field :course_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <p><%= f.button "RSVP" %></p>
+<% end %>
