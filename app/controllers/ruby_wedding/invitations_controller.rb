@@ -4,9 +4,17 @@ module RubyWedding
   class InvitationsController < ApplicationController
 
     before_filter :find_invitation_and_menu, only: [:edit, :update]
+    layout 'application'
 
     def find
       @invitations = Invitation.find_by_guest_surname(params[:surname])
+      if @invitations.count === 1
+        redirect_to edit_invitation_path(@invitations.first)
+      elsif @invitations.blank?
+        render :not_found
+      else
+        render :find
+      end
     end
 
     def edit

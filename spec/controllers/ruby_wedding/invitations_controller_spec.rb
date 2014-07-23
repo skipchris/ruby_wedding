@@ -9,14 +9,37 @@ module RubyWedding
     describe "find" do
       let(:mock_invitations) { [double("Invitation")] }
 
-      before do
-        Invitation.stub(:find_by_guest_surname).and_return(mock_invitations)
-        get :find
+      context "one invitation is found" do
+        before do
+          Invitation.stub(:find_by_guest_surname).and_return(mock_invitations)
+          get :find
+        end
+        it { expect(assigns(:invitations)).to eq(mock_invitations) }
+        it { should redirect_to(edit_invitation_path(mock_invitations[0])) }
+        it { expect(response.status).to eq(302) }
       end
 
-      it { expect(assigns(:invitations)).to eq(mock_invitations) }
-      it { should render_template('invitations/find') }
-      it { expect(response.status).to eq(200) }
+      context "many invitations are found" do
+        let(:mock_invitations) { [double("Invitation1"), double("invitation2")] }
+        before do
+          Invitation.stub(:find_by_guest_surname).and_return(mock_invitations)
+          get :find
+        end
+        it { expect(assigns(:invitations)).to eq(mock_invitations) }
+        it { should render_template('invitations/find') }
+        it { expect(response.status).to eq(200) }
+      end
+
+      context "no invitations are found" do
+        before do
+          Invitation.stub(:find_by_guest_surname).and_return([])
+          get :find
+        end
+        it { expect(assigns(:invitations)).to be_blank }
+        it { should render_template('invitations/not_found') }
+        it { expect(response.status).to eq(200) }
+      end
+
     end
 
     describe "edit" do
