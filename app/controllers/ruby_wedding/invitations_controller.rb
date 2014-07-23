@@ -34,7 +34,7 @@ module RubyWedding
       @menu = Menu.all.first
       @invitation.guests.each do |guest|
         @menu.courses.each do |course|
-          guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.where(course_id: course.id)
+          guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.where(course_id: course.id).present?
         end
       end
     end
