@@ -4,7 +4,7 @@ module RubyWedding
 
   describe Guest do
 
-    it { should have_and_belong_to_many(:invitations) }
+    it { should belong_to(:invitation) }
     it { should have_many(:dishes).through(:menu_choices) }
 
     it { should accept_nested_attributes_for(:menu_choices) }

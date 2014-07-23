@@ -1,7 +1,7 @@
 module RubyWedding
   class Guest < ActiveRecord::Base
 
-    has_and_belongs_to_many :invitations, class_name: "RubyWedding::Invitation", join_table: 'ruby_wedding_invitations_ruby_wedding_guests'
+    belongs_to :invitation, class_name: "RubyWedding::Invitation"
     has_many :menu_choices
     has_many :dishes, through: :menu_choices
 

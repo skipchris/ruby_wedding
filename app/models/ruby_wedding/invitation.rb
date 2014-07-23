@@ -1,12 +1,11 @@
 module RubyWedding
   class Invitation < ActiveRecord::Base
-    has_and_belongs_to_many :guests, class_name: "RubyWedding::Guest", join_table: 'ruby_wedding_invitations_ruby_wedding_guests'
+    has_many :guests, class_name: "RubyWedding::Guest"
 
     accepts_nested_attributes_for :guests
 
     def self.find_by_guest_surname(surname)
-      joins(:guests).where('ruby_wedding_guests.surname' => surname)
+      includes(:guests).where('ruby_wedding_guests.surname' => surname).distinct
     end
-
   end
 end
