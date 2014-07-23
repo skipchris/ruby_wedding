@@ -1,6 +1,17 @@
 = RubyWedding
 
-This project rocks and uses MIT-LICENSE.
+A mountable Rails Engine to help you plan your wedding. Manage guests, RSVPS,
+and menu choices.
+
+= Contributing
+
+Please contribute. If you’re not sure whether I’ll be interested in your
+contribution, file a GitHub issue and we’ll chat it over first? I promise to
+be helpful.
+
+I very much subscribe to the Contributor Covenant
+(see: https://github.com/Bantik/contributor_covenant), but need to find a
+better way to include it in this project. Read it if you are unsure.
 
 = TODO
 
