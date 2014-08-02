@@ -14,6 +14,5 @@ module RubyWedding
     def fullname
       "#{firstname} #{surname}"
     end
-
   end
 end
