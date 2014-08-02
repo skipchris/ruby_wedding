@@ -44,7 +44,7 @@ module RubyWedding
 
     describe "edit" do
       let(:mock_invitation) { double("Invitation", guests: []) }
-      let(:mock_menu)       { double("Menu") }
+      let(:mock_menu)       { double("Menu", courses: []) }
 
       before do
         Invitation.stub(:find).and_return(mock_invitation)
@@ -75,7 +75,7 @@ module RubyWedding
 
     describe "update" do
       let(:mock_invitation) { double("Invitation", to_param: 1, guests: []) }
-      let(:mock_menu)       { double("Menu") }
+      let(:mock_menu)       { double("Menu", courses: []) }
 
       before do
         Invitation.stub(:find).and_return(mock_invitation)

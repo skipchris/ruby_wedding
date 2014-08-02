@@ -40,9 +40,11 @@ module RubyWedding
       # I’m just doing what’s right for *my* wedding
       #
       @menu = Menu.all.first
-      @invitation.guests.each do |guest|
-        @menu.courses.each do |course|
-          guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.where(course_id: course.id).present?
+      if @menu.present? && @menu.courses.present?
+        @invitation.guests.each do |guest|
+          @menu.courses.each do |course|
+            guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.where(course_id: course.id).present?
+          end
         end
       end
     end
