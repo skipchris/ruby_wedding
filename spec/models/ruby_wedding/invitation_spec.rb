@@ -44,5 +44,16 @@ module RubyWedding
         it { expect(subject.guest_list).to eq("Jackson Five and Pollock Cod") }
       end
     end
+
+    describe 'contains_children?' do
+      context "one of the guests is a child" do
+        before { subject.guests.build(firstname: "Bairn", child: true) }
+        it { expect(subject.contains_children?).to be true }
+      end
+      context "none of the guests is a child" do
+        before { subject.guests.build(firstname: "Adult", child: false) }
+        it { expect(subject.contains_children?).to be false }
+      end
+    end
   end
 end
