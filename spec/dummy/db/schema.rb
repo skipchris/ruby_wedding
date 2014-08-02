@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802152203) do
+ActiveRecord::Schema.define(version: 20140802154740) do
 
   create_table "ruby_wedding_courses", force: true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140802152203) do
     t.datetime "updated_at"
     t.boolean  "rsvp"
     t.integer  "invitation_id"
+    t.boolean  "child",         default: false, null: false
   end
 
   add_index "ruby_wedding_guests", ["invitation_id"], name: "index_ruby_wedding_guests_on_invitation_id"

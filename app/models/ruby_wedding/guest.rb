@@ -9,6 +9,7 @@ module RubyWedding
 
     validates :firstname, presence: true
     validates :surname, presence: true
+    validates :child, inclusion: { in: [true, false] }
 
     def fullname
       "#{firstname} #{surname}"

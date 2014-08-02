@@ -12,6 +12,7 @@ module RubyWedding
     describe "validations" do
       it { should validate_presence_of(:firstname) }
       it { should validate_presence_of(:surname) }
+      it { should_not allow_value(nil).for(:child) }
     end
 
     describe '#fullname' do
