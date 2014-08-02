@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723204251) do
+ActiveRecord::Schema.define(version: 20140802114327) do
 
   create_table "ruby_wedding_courses", force: true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140723204251) do
   create_table "ruby_wedding_invitations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "notes",      limit: 2000
   end
 
   create_table "ruby_wedding_menu_choices", force: true do |t|
