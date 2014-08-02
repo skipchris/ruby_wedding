@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802114327) do
+ActiveRecord::Schema.define(version: 20140802152203) do
 
   create_table "ruby_wedding_courses", force: true do |t|
     t.string   "name"
     t.integer  "menu_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order",      default: 0, null: false
   end
 
   add_index "ruby_wedding_courses", ["menu_id"], name: "index_ruby_wedding_courses_on_menu_id"
