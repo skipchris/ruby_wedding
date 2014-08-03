@@ -20,3 +20,5 @@ better way to include it in this project. Read it if you are unsure.
   in case people want to extend this.
 - More validations? In particular could validate only one dish per course.
 - I18n
+- Refactor the "RSVP" stuff to a RSVP-model, as it should prob have been all along.
+
