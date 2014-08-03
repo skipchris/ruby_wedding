@@ -6,5 +6,7 @@ module RubyWedding
 
     validates :name,
       presence: true
+
+    validates :vegetarian, inclusion: { in: [true, false] }
   end
 end
