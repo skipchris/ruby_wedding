@@ -50,7 +50,10 @@ module RubyWedding
     end
 
     def invitation_params
-      params.require(:invitation).permit(guests_attributes: [:rsvp, { :menu_choices_attributes => [:dish_id, :course_id] }, :id])
+      params.require(:invitation).permit(
+        { guests_attributes: [:rsvp, { :menu_choices_attributes => [:dish_id, :course_id] }, :id] },
+        :notes
+      )
     end
 
   end
