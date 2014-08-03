@@ -11,7 +11,7 @@ module RubyWedding
     end
 
     def guest_list
-      guests.map(&:fullname).to_sentence(last_word_connector: ' & ')
+      guests.all.map(&:fullname).to_sentence(last_word_connector: ' & ')
     end
 
     def contains_children?
