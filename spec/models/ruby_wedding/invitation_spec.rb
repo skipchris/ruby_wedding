@@ -10,20 +10,26 @@ module RubyWedding
     describe 'self#find_by_guest_surname' do
       let(:guest1) { create(:guest, firstname: "Barry", surname: "Bobbins") }
       let(:guest2) { create(:guest, firstname: "Doris", surname: "Bobbins") }
-      let(:guest3) { create(:guest, firstname: "Tim",   surname: "Krul") }
+      let(:guest3) { create(:guest, firstname: "Harry", surname: "Hopping") }
+      let(:guest4) { create(:guest, firstname: "Tim",   surname: "Krul") }
       let(:invitation1) { create(:invitation) }
       let(:invitation2) { create(:invitation) }
       before do
         invitation1.guests << guest1
         invitation1.guests << guest2
+        invitation1.guests << guest3
         invitation1.save
-        invitation2.guests << guest3
+        invitation2.guests << guest4
         invitation2.save
       end
       it "locates the correct invitation" do
         expect(Invitation.find_by_guest_surname("Bobbins")).to include(invitation1)
         expect(Invitation.find_by_guest_surname("Krul")).to    include(invitation2)
         expect(Invitation.find_by_guest_surname("Hojo")).to    be_blank
+      end
+      it "includes all the guests even if they don’t share a surname" do
+        invs = Invitation.find_by_guest_surname("Bobbins")
+        expect(invs.first.guests).to include(guest3)
       end
     end
 

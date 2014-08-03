@@ -7,11 +7,11 @@ module RubyWedding
     validates :notes, length: { maximum: 2000 }
 
     def self.find_by_guest_surname(surname)
-      includes(:guests).where('ruby_wedding_guests.surname' => surname).distinct
+      joins(:guests).where('ruby_wedding_guests.surname' => surname).distinct
     end
 
     def guest_list
-      guests.all.map(&:fullname).to_sentence(last_word_connector: ' & ')
+      guests.map(&:fullname).to_sentence(last_word_connector: ' & ')
     end
 
     def contains_children?
