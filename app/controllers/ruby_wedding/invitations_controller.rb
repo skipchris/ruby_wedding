@@ -18,12 +18,14 @@ module RubyWedding
     end
 
     def edit
+      prep_guests_for_form
     end
 
     def update
       if @invitation.update(invitation_params)
         redirect_to thanks_invitation_path(@invitation)
       else
+        prep_guests_for_form
         render :edit
       end
     end
@@ -35,15 +37,18 @@ module RubyWedding
 
     def find_invitation_and_menu
       @invitation = Invitation.find(params[:id])
+      @menu = Menu.all.first
+    end
+
+    def prep_guests_for_form
       # TODO
       # Not really sure how this should work more generically...
       # I’m just doing what’s right for *my* wedding
       #
-      @menu = Menu.all.first
       if @menu.present? && @menu.courses.present?
         @invitation.guests.each do |guest|
           @menu.courses.each do |course|
-            guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.where(course_id: course.id).present?
+            guest.menu_choices.build(course_id: course.id) unless guest.menu_choices.find_index { |obj| obj.course_id == course.id }
           end
         end
       end
