@@ -11,6 +11,8 @@ module RubyWedding
     validates :surname, presence: true
     validates :child, inclusion: { in: [true, false] }
 
+    default_scope -> { order("surname ASC, firstname ASC") }
+
     def fullname
       "#{firstname} #{surname}"
     end
