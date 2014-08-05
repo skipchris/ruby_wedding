@@ -7,7 +7,8 @@ module RubyWedding
     validates :notes, length: { maximum: 2000 }
 
     def self.find_by_guest_surname(surname)
-      joins(:guests).where('ruby_wedding_guests.surname' => surname).distinct
+      # Is this 100% RDBMS-agnostic, or do we need to branch?
+      joins(:guests).where('lower(ruby_wedding_guests.surname) = ?', surname.downcase).distinct
     end
 
     def guest_list

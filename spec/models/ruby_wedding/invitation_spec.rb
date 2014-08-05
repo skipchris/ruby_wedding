@@ -22,7 +22,7 @@ module RubyWedding
       end
       it "locates the correct invitation" do
         expect(Invitation.find_by_guest_surname("Bobbins")).to include(invitation1)
-        expect(Invitation.find_by_guest_surname("Krul")).to    include(invitation2)
+        expect(Invitation.find_by_guest_surname("krul")).to    include(invitation2) # Check lowercase
         expect(Invitation.find_by_guest_surname("Hojo")).to    be_blank
       end
       it "includes all the guests even if they don’t share a surname" do
