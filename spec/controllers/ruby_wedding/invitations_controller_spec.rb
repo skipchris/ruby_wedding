@@ -14,7 +14,7 @@ module RubyWedding
         end
         it { expect(assigns(:invitations)).to eq(mock_invitations) }
         it { should redirect_to(edit_invitation_path(mock_invitations[0])) }
-        it { expect(response.status).to eq(302) }
+        it { should respond_with(302) }
       end
 
       context "many invitations are found" do
@@ -25,7 +25,7 @@ module RubyWedding
         end
         it { expect(assigns(:invitations)).to eq(mock_invitations) }
         it { should render_template('invitations/find') }
-        it { expect(response.status).to eq(200) }
+        it { should respond_with(200) }
       end
 
       context "no invitations are found" do
@@ -35,7 +35,7 @@ module RubyWedding
         end
         it { expect(assigns(:invitations)).to be_blank }
         it { should render_template('invitations/not_found') }
-        it { expect(response.status).to eq(200) }
+        it { should respond_with(200) }
       end
 
     end
@@ -97,8 +97,20 @@ module RubyWedding
         it { expect(assigns(:menu)).to eq(mock_menu) }
         it { expect(assigns(:invitation)).to eq(mock_invitation) }
         it { should render_template('invitations/edit') }
-        it { expect(response.status).to eq(200) }
+        it { should respond_with(200) }
       end
+    end
+
+    describe "thanks" do
+      let(:mock_invitation) { double("Invitation", to_param: 1, guests: []) }
+      before do
+        Invitation.stub(:find).and_return(mock_invitation)
+        get :thanks, id: 1
+      end
+
+      it { expect(assigns(:invitation)).to eq(mock_invitation) }
+      it { should render_template('invitations/thanks') }
+      it { should respond_with(200) }
     end
   end
 end

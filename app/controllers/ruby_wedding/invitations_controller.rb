@@ -3,7 +3,7 @@ require_dependency "ruby_wedding/application_controller"
 module RubyWedding
   class InvitationsController < ApplicationController
 
-    before_filter :find_invitation_and_menu, only: [:edit, :update]
+    before_filter :find_invitation_and_menu, only: [:edit, :update, :thanks]
     layout 'application'
 
     def find
