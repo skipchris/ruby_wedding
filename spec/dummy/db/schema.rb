@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140803185423) do
     t.string   "surname"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "rsvp"
     t.integer  "invitation_id"
     t.boolean  "child",         default: false, null: false
+    t.boolean  "rsvp"
   end
 
   add_index "ruby_wedding_guests", ["invitation_id"], name: "index_ruby_wedding_guests_on_invitation_id"
@@ -52,15 +52,16 @@ ActiveRecord::Schema.define(version: 20140803185423) do
   end
 
   create_table "ruby_wedding_menu_choices", force: true do |t|
-    t.integer  "guest_id"
     t.integer  "dish_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
+    t.integer  "rsvp_id",    default: 0, null: false
+    t.integer  "guest_id",   default: 0, null: false
   end
 
   add_index "ruby_wedding_menu_choices", ["dish_id"], name: "index_ruby_wedding_menu_choices_on_dish_id"
-  add_index "ruby_wedding_menu_choices", ["guest_id"], name: "index_ruby_wedding_menu_choices_on_guest_id"
+  add_index "ruby_wedding_menu_choices", ["rsvp_id"], name: "index_ruby_wedding_menu_choices_on_rsvp_id"
 
   create_table "ruby_wedding_menus", force: true do |t|
     t.string   "name"
