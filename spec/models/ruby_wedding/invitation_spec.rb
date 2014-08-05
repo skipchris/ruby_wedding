@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 module RubyWedding
   describe Invitation do
     it { should have_many(:guests) }

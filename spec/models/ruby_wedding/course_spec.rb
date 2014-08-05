@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 module RubyWedding
   describe Course do
     # Associations

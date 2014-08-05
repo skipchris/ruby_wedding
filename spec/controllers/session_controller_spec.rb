@@ -1,6 +1,3 @@
-# encoding: utf-8
-require 'spec_helper'
-
 describe RubyWedding::SessionController do
 
   # Setting this as an instance variable in a config.before block didn’t work.
