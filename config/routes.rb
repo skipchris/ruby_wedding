@@ -6,6 +6,7 @@ RubyWedding::Engine.routes.draw do
 
   namespace :protected do
     get '/', to: 'base#index', as: 'root'
+    resources :guests, only: [:index]
   end
 
   resources :invitations, only: [:edit, :update] do
