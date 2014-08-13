@@ -1,8 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :ruby_wedding_dish, :class => 'Dish' do
-    name "MyString"
+  factory :dish, :class => 'RubyWedding::Dish' do
+    name "Deliciousness"
     course nil
+    vegetarian false
   end
 end

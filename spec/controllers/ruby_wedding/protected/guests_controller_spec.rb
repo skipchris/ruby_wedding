@@ -10,7 +10,7 @@ module RubyWedding
 
     describe 'GET index' do
       let(:guests) { double('guests') }
-      before { allow(RubyWedding::Guest).to receive(:all).and_return(guests) }
+      before { allow(RubyWedding::Guest).to receive(:with_reply_details).and_return(guests) }
       it "assigns @guests" do
         get :index
         expect(assigns(:guests)).to eq(guests)

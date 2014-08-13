@@ -13,6 +13,8 @@ module RubyWedding
 
     default_scope -> { order("surname ASC, firstname ASC") }
 
+    scope :with_reply_details, -> { where('rsvp is not null').joins(menu_choices: :dish) }
+
     def fullname
       "#{firstname} #{surname}"
     end

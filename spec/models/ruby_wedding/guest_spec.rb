@@ -26,6 +26,25 @@ module RubyWedding
       end
     end
 
+    describe "with_reply_details" do
+      before do
+        m = create :menu
+        course = create :course, menu: m
+        dish = create :dish, name: "Pudding", course: course
+        @g1 = create :guest
+        @g2 = create :guest
+        @g1.rsvp = true
+        @g1.menu_choices.build dish: dish, course: course
+        @g1.save
+        # Phew!
+      end
+      it "Brings back guests who have menu choices" do
+        gs = RubyWedding::Guest.with_reply_details
+        expect(gs).to     include(@g1)
+        expect(gs).to_not include(@g2)
+      end
+    end
+
     describe '#fullname' do
       let(:guest) { build(:guest) }
       it { expect(guest.fullname).to eq("Kim Hop") }
