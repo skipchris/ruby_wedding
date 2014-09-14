@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803185423) do
+ActiveRecord::Schema.define(version: 20140914104529) do
 
   create_table "ruby_wedding_courses", force: true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140803185423) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "vegetarian"
+    t.string   "shortname",  limit: 20
   end
 
   add_index "ruby_wedding_dishes", ["course_id"], name: "index_ruby_wedding_dishes_on_course_id"
